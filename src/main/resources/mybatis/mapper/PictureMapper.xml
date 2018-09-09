@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.loliconck.lovemm.dao.PictureMapper">
+  <resultMap id="BaseResultMap" type="com.loliconck.lovemm.entity.po.Picture">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="channel_id" jdbcType="BIGINT" property="channelId" />
+    <result column="album_id" jdbcType="BIGINT" property="albumId" />
+    <result column="pic_name" jdbcType="VARCHAR" property="picName" />
+    <result column="is_thumbnail" jdbcType="BIT" property="isThumbnail" />
+    <result column="ctime" jdbcType="TIMESTAMP" property="ctime" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, channel_id, album_id, pic_name, is_thumbnail, ctime, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from picture
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from picture
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.loliconck.lovemm.entity.po.Picture">
+    insert into picture (id, channel_id, album_id, 
+      pic_name, is_thumbnail, ctime, 
+      is_delete)
+    values (#{id,jdbcType=BIGINT}, #{channelId,jdbcType=BIGINT}, #{albumId,jdbcType=BIGINT}, 
+      #{picName,jdbcType=VARCHAR}, #{isThumbnail,jdbcType=BIT}, #{ctime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.loliconck.lovemm.entity.po.Picture">
+    insert into picture
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="channelId != null">
+        channel_id,
+      </if>
+      <if test="albumId != null">
+        album_id,
+      </if>
+      <if test="picName != null">
+        pic_name,
+      </if>
+      <if test="isThumbnail != null">
+        is_thumbnail,
+      </if>
+      <if test="ctime != null">
+        ctime,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="channelId != null">
+        #{channelId,jdbcType=BIGINT},
+      </if>
+      <if test="albumId != null">
+        #{albumId,jdbcType=BIGINT},
+      </if>
+      <if test="picName != null">
+        #{picName,jdbcType=VARCHAR},
+      </if>
+      <if test="isThumbnail != null">
+        #{isThumbnail,jdbcType=BIT},
+      </if>
+      <if test="ctime != null">
+        #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.loliconck.lovemm.entity.po.Picture">
+    update picture
+    <set>
+      <if test="channelId != null">
+        channel_id = #{channelId,jdbcType=BIGINT},
+      </if>
+      <if test="albumId != null">
+        album_id = #{albumId,jdbcType=BIGINT},
+      </if>
+      <if test="picName != null">
+        pic_name = #{picName,jdbcType=VARCHAR},
+      </if>
+      <if test="isThumbnail != null">
+        is_thumbnail = #{isThumbnail,jdbcType=BIT},
+      </if>
+      <if test="ctime != null">
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.loliconck.lovemm.entity.po.Picture">
+    update picture
+    set channel_id = #{channelId,jdbcType=BIGINT},
+      album_id = #{albumId,jdbcType=BIGINT},
+      pic_name = #{picName,jdbcType=VARCHAR},
+      is_thumbnail = #{isThumbnail,jdbcType=BIT},
+      ctime = #{ctime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
