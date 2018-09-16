@@ -23,12 +23,6 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    @GetMapping(value = "/list")
-    public String getAll(Model model) {
-        model.addAttribute("admins", adminService.getAll());
-        return "/admin/list";
-    }
-
     @GetMapping("/login")
     public String login() {
         return "/admin/login";
@@ -37,10 +31,26 @@ public class AdminController {
     @PostMapping("/login")
     public String login(HttpServletRequest request, String userName, String userPasswd) {
         if (adminService.login(request, userName, userPasswd)) {
-            return "redirect:/admin/list";
+            return "redirect:/admin/index";
         }
         else {
             return "redirect:/admin/login";
         }
+    }
+
+    @GetMapping("/index")
+    public String index() {
+        return "/admin/index";
+    }
+
+    @GetMapping(value = "/list")
+    public String getAll(Model model) {
+        model.addAttribute("admins", adminService.getAll());
+        return "/admin/list";
+    }
+
+    @GetMapping("/channel")
+    public String channel() {
+        return "/admin/channel";
     }
 }
