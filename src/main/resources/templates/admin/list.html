@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员列表</title>
+</head>
+<body>
+<h2>管理员列表</h2>
+<div>
+    <ul>
+        <li th:each="admin:${admins}">
+            <span th:text="${admin.id}"></span>-
+            <span th:text="${admin.userName}"></span>-
+            <span th:text="${admin.lastLoginTime}"></span>-
+            <span th:text="${admin.createTime}"></span>
+            <span th:text="${admin.isDelete}"></span>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,14 +1,14 @@
 package com.loliconck.lovemm.controller;
 
-import com.loliconck.lovemm.entity.po.Admin;
 import com.loliconck.lovemm.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author jackid
@@ -23,9 +23,24 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    @ResponseBody
-    @GetMapping(value = "/all")
-    public List<Admin> getAll() {
-        return adminService.getAll();
+    @GetMapping(value = "/list")
+    public String getAll(Model model) {
+        model.addAttribute("admins", adminService.getAll());
+        return "/admin/list";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "/admin/login";
+    }
+
+    @PostMapping("/login")
+    public String login(HttpServletRequest request, String userName, String userPasswd) {
+        if (adminService.login(request, userName, userPasswd)) {
+            return "redirect:/admin/list";
+        }
+        else {
+            return "redirect:/admin/login";
+        }
     }
 }

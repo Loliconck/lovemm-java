@@ -106,8 +106,22 @@
 
     <select id="selectAll" resultMap="BaseResultMap">
         select
-        <include refid="Base_Column_List"/>
+        id,user_name,last_login_time,create_time,is_delete
         from admin
-        where is_delete=0
     </select>
+
+    <select id="selectByUserName" resultMap="BaseResultMap">
+        select
+        id,user_name,last_login_time,create_time,is_delete
+        from admin
+        where  user_name=#{userName}
+        and user_passwd=#{userPasswd}
+        and is_delete=0
+    </select>
+
+    <update id="updateLastLoginTime">
+        update admin
+        set last_login_time=#{loginTime}
+        where id=#{id}
+    </update>
 </mapper>
