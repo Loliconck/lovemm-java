@@ -7,11 +7,11 @@ public class Admin {
 
     private String userName;
 
-    private String password;
+    private String userPasswd;
 
     private Date lastLoginTime;
 
-    private Date ctime;
+    private Date createTime;
 
     private Boolean isDelete;
 
@@ -31,12 +31,12 @@ public class Admin {
         this.userName = userName == null ? null : userName.trim();
     }
 
-    public String getPassword() {
-        return password;
+    public String getUserPasswd() {
+        return userPasswd;
     }
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+    public void setUserPasswd(String userPasswd) {
+        this.userPasswd = userPasswd == null ? null : userPasswd.trim();
     }
 
     public Date getLastLoginTime() {
@@ -47,12 +47,12 @@ public class Admin {
         this.lastLoginTime = lastLoginTime;
     }
 
-    public Date getCtime() {
-        return ctime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCtime(Date ctime) {
-        this.ctime = ctime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public Boolean getIsDelete() {

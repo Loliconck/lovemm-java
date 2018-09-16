@@ -13,9 +13,11 @@ public class Album {
 
     private Long hitCount;
 
+    private Boolean hasThumbnail;
+
     private String remark;
 
-    private Date ctime;
+    private Date createTime;
 
     private Boolean isDelete;
 
@@ -59,6 +61,14 @@ public class Album {
         this.hitCount = hitCount;
     }
 
+    public Boolean getHasThumbnail() {
+        return hasThumbnail;
+    }
+
+    public void setHasThumbnail(Boolean hasThumbnail) {
+        this.hasThumbnail = hasThumbnail;
+    }
+
     public String getRemark() {
         return remark;
     }
@@ -67,12 +77,12 @@ public class Album {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public Date getCtime() {
-        return ctime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCtime(Date ctime) {
-        this.ctime = ctime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public Boolean getIsDelete() {

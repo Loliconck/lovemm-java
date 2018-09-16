@@ -19,7 +19,7 @@ public class Channel {
 
     private String remark;
 
-    private Date ctime;
+    private Date createTime;
 
     private Boolean isDelete;
 
@@ -87,12 +87,12 @@ public class Channel {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public Date getCtime() {
-        return ctime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCtime(Date ctime) {
-        this.ctime = ctime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public Boolean getIsDelete() {

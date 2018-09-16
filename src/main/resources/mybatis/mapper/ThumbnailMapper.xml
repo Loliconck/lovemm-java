@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.loliconck.lovemm.dao.PictureMapper">
-  <resultMap id="BaseResultMap" type="com.loliconck.lovemm.entity.po.Picture">
+<mapper namespace="com.loliconck.lovemm.dao.ThumbnailMapper">
+  <resultMap id="BaseResultMap" type="com.loliconck.lovemm.entity.po.Thumbnail">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="channel_id" jdbcType="BIGINT" property="channelId" />
     <result column="album_id" jdbcType="BIGINT" property="albumId" />
-    <result column="pic_name" jdbcType="VARCHAR" property="picName" />
-    <result column="is_thumbnail" jdbcType="BIT" property="isThumbnail" />
+    <result column="thumbnail_name" jdbcType="VARCHAR" property="thumbnailName" />
+    <result column="is_cover" jdbcType="BIT" property="isCover" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="is_delete" jdbcType="BIT" property="isDelete" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, channel_id, album_id, pic_name, is_thumbnail, create_time, is_delete
+    id, channel_id, album_id, thumbnail_name, is_cover, create_time, is_delete
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from picture
+    from thumbnail
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from picture
+    delete from thumbnail
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.loliconck.lovemm.entity.po.Picture">
-    insert into picture (id, channel_id, album_id, 
-      pic_name, is_thumbnail, create_time, 
+  <insert id="insert" parameterType="com.loliconck.lovemm.entity.po.Thumbnail">
+    insert into thumbnail (id, channel_id, album_id, 
+      thumbnail_name, is_cover, create_time, 
       is_delete)
     values (#{id,jdbcType=BIGINT}, #{channelId,jdbcType=BIGINT}, #{albumId,jdbcType=BIGINT}, 
-      #{picName,jdbcType=VARCHAR}, #{isThumbnail,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{thumbnailName,jdbcType=VARCHAR}, #{isCover,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
       #{isDelete,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.loliconck.lovemm.entity.po.Picture">
-    insert into picture
+  <insert id="insertSelective" parameterType="com.loliconck.lovemm.entity.po.Thumbnail">
+    insert into thumbnail
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -43,11 +43,11 @@
       <if test="albumId != null">
         album_id,
       </if>
-      <if test="picName != null">
-        pic_name,
+      <if test="thumbnailName != null">
+        thumbnail_name,
       </if>
-      <if test="isThumbnail != null">
-        is_thumbnail,
+      <if test="isCover != null">
+        is_cover,
       </if>
       <if test="createTime != null">
         create_time,
@@ -66,11 +66,11 @@
       <if test="albumId != null">
         #{albumId,jdbcType=BIGINT},
       </if>
-      <if test="picName != null">
-        #{picName,jdbcType=VARCHAR},
+      <if test="thumbnailName != null">
+        #{thumbnailName,jdbcType=VARCHAR},
       </if>
-      <if test="isThumbnail != null">
-        #{isThumbnail,jdbcType=BIT},
+      <if test="isCover != null">
+        #{isCover,jdbcType=BIT},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -80,8 +80,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.loliconck.lovemm.entity.po.Picture">
-    update picture
+  <update id="updateByPrimaryKeySelective" parameterType="com.loliconck.lovemm.entity.po.Thumbnail">
+    update thumbnail
     <set>
       <if test="channelId != null">
         channel_id = #{channelId,jdbcType=BIGINT},
@@ -89,11 +89,11 @@
       <if test="albumId != null">
         album_id = #{albumId,jdbcType=BIGINT},
       </if>
-      <if test="picName != null">
-        pic_name = #{picName,jdbcType=VARCHAR},
+      <if test="thumbnailName != null">
+        thumbnail_name = #{thumbnailName,jdbcType=VARCHAR},
       </if>
-      <if test="isThumbnail != null">
-        is_thumbnail = #{isThumbnail,jdbcType=BIT},
+      <if test="isCover != null">
+        is_cover = #{isCover,jdbcType=BIT},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -104,12 +104,12 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.loliconck.lovemm.entity.po.Picture">
-    update picture
+  <update id="updateByPrimaryKey" parameterType="com.loliconck.lovemm.entity.po.Thumbnail">
+    update thumbnail
     set channel_id = #{channelId,jdbcType=BIGINT},
       album_id = #{albumId,jdbcType=BIGINT},
-      pic_name = #{picName,jdbcType=VARCHAR},
-      is_thumbnail = #{isThumbnail,jdbcType=BIT},
+      thumbnail_name = #{thumbnailName,jdbcType=VARCHAR},
+      is_cover = #{isCover,jdbcType=BIT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       is_delete = #{isDelete,jdbcType=BIT}
     where id = #{id,jdbcType=BIGINT}

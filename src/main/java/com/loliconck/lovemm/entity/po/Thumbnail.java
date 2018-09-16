@@ -2,16 +2,16 @@ package com.loliconck.lovemm.entity.po;
 
 import java.util.Date;
 
-public class Picture {
+public class Thumbnail {
     private Long id;
 
     private Long channelId;
 
     private Long albumId;
 
-    private String picName;
+    private String thumbnailName;
 
-    private Boolean isThumbnail;
+    private Boolean isCover;
 
     private Date createTime;
 
@@ -41,20 +41,20 @@ public class Picture {
         this.albumId = albumId;
     }
 
-    public String getPicName() {
-        return picName;
+    public String getThumbnailName() {
+        return thumbnailName;
     }
 
-    public void setPicName(String picName) {
-        this.picName = picName == null ? null : picName.trim();
+    public void setThumbnailName(String thumbnailName) {
+        this.thumbnailName = thumbnailName == null ? null : thumbnailName.trim();
     }
 
-    public Boolean getIsThumbnail() {
-        return isThumbnail;
+    public Boolean getIsCover() {
+        return isCover;
     }
 
-    public void setIsThumbnail(Boolean isThumbnail) {
-        this.isThumbnail = isThumbnail;
+    public void setIsCover(Boolean isCover) {
+        this.isCover = isCover;
     }
 
     public Date getCreateTime() {

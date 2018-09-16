@@ -10,12 +10,12 @@
     <result column="is_special" jdbcType="BIT" property="isSpecial" />
     <result column="thumbnail_name" jdbcType="VARCHAR" property="thumbnailName" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
-    <result column="ctime" jdbcType="TIMESTAMP" property="ctime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="is_delete" jdbcType="BIT" property="isDelete" />
   </resultMap>
   <sql id="Base_Column_List">
     id, channel_name, order_num, is_valid, hit_count, is_special, thumbnail_name, remark, 
-    ctime, is_delete
+    create_time, is_delete
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -30,11 +30,11 @@
   <insert id="insert" parameterType="com.loliconck.lovemm.entity.po.Channel">
     insert into channel (id, channel_name, order_num, 
       is_valid, hit_count, is_special, 
-      thumbnail_name, remark, ctime, 
+      thumbnail_name, remark, create_time, 
       is_delete)
     values (#{id,jdbcType=BIGINT}, #{channelName,jdbcType=VARCHAR}, #{orderNum,jdbcType=INTEGER}, 
       #{isValid,jdbcType=BIT}, #{hitCount,jdbcType=BIGINT}, #{isSpecial,jdbcType=BIT}, 
-      #{thumbnailName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{ctime,jdbcType=TIMESTAMP}, 
+      #{thumbnailName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{isDelete,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.loliconck.lovemm.entity.po.Channel">
@@ -64,8 +64,8 @@
       <if test="remark != null">
         remark,
       </if>
-      <if test="ctime != null">
-        ctime,
+      <if test="createTime != null">
+        create_time,
       </if>
       <if test="isDelete != null">
         is_delete,
@@ -96,8 +96,8 @@
       <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="ctime != null">
-        #{ctime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="isDelete != null">
         #{isDelete,jdbcType=BIT},
@@ -128,8 +128,8 @@
       <if test="remark != null">
         remark = #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="ctime != null">
-        ctime = #{ctime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="isDelete != null">
         is_delete = #{isDelete,jdbcType=BIT},
@@ -146,7 +146,7 @@
       is_special = #{isSpecial,jdbcType=BIT},
       thumbnail_name = #{thumbnailName,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
-      ctime = #{ctime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
       is_delete = #{isDelete,jdbcType=BIT}
     where id = #{id,jdbcType=BIGINT}
   </update>
