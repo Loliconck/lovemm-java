@@ -1,28 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h2>管理员登陆</h2>
-<div>
-    <form id="form1" method="post" action="/admin/login" onsubmit="AdminLogin();">
-        <div>
-            <label for="userName">用户名:</label>
-            <input type="text" name="userName" id="userName">
-        </div>
-        <div>
-            <label for="txt_UserPasswd">密码:</label>
-            <input type="password" id="txt_UserPasswd">
-            <input type="hidden" name="userPasswd" id="userPasswd">
-        </div>
-        <div>
-            <input type="submit" value="登陆">
-        </div>
-    </form>
+<div class="jumbotron text-center" th:include="admin/_header::#header-section"></div>
+<div class="container">
+    <div class="row">
+        <h2>管理员登陆</h2>
+    </div>
+    <div class="row">
+        <form id="form1" method="post" action="/admin/login" onsubmit="AdminLogin();">
+            <div class="form-group">
+                <label for="userName">用户名:</label>
+                <input type="text" class="form-control" name="userName" id="userName">
+            </div>
+            <div class="form-group">
+                <label for="txt_UserPasswd">密码:</label>
+                <input type="password" class="form-control" id="txt_UserPasswd">
+                <input type="hidden" name="userPasswd" id="userPasswd">
+            </div>
+            <input type="submit" class="btn btn-primary" value="登陆">
+        </form>
+    </div>
 </div>
-<script src="/js/jquery-1.8.2.js"></script>
+<div class="jumbotron text-center" th:include="admin/_footer::#copy-section"></div>
+<script src="/js/jquery-3.3.1.min.js"></script>
 <script src="/js/sha-1.js"></script>
 <script type="text/javascript">
     function AdminLogin() {
