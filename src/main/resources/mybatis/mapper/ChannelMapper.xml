@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.loliconck.lovemm.dao.ChannelMapper">
   <resultMap id="BaseResultMap" type="com.loliconck.lovemm.entity.po.Channel">
-    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="id" jdbcType="BIGINT" property="id" />
     <result column="channel_name" jdbcType="VARCHAR" property="channelName" />
     <result column="order_num" jdbcType="INTEGER" property="orderNum" />
     <result column="is_valid" jdbcType="BIT" property="isValid" />
@@ -12,30 +12,17 @@
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="show_date" jdbcType="TIMESTAMP" property="showDate" />
   </resultMap>
-  <sql id="Base_Column_List">
-    id, channel_name, order_num, is_valid, hit_count, is_special, thumbnail_name, remark, 
-    create_time, is_delete
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from channel
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from channel
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
   <insert id="insert" parameterType="com.loliconck.lovemm.entity.po.Channel">
     insert into channel (id, channel_name, order_num, 
       is_valid, hit_count, is_special, 
       thumbnail_name, remark, create_time, 
-      is_delete)
+      is_delete, show_date)
     values (#{id,jdbcType=BIGINT}, #{channelName,jdbcType=VARCHAR}, #{orderNum,jdbcType=INTEGER}, 
       #{isValid,jdbcType=BIT}, #{hitCount,jdbcType=BIGINT}, #{isSpecial,jdbcType=BIT}, 
       #{thumbnailName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{isDelete,jdbcType=BIT})
+      #{isDelete,jdbcType=BIT}, #{showDate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.loliconck.lovemm.entity.po.Channel">
     insert into channel
@@ -70,6 +57,9 @@
       <if test="isDelete != null">
         is_delete,
       </if>
+      <if test="showDate != null">
+        show_date,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -102,52 +92,9 @@
       <if test="isDelete != null">
         #{isDelete,jdbcType=BIT},
       </if>
+      <if test="showDate != null">
+        #{showDate,jdbcType=TIMESTAMP},
+      </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.loliconck.lovemm.entity.po.Channel">
-    update channel
-    <set>
-      <if test="channelName != null">
-        channel_name = #{channelName,jdbcType=VARCHAR},
-      </if>
-      <if test="orderNum != null">
-        order_num = #{orderNum,jdbcType=INTEGER},
-      </if>
-      <if test="isValid != null">
-        is_valid = #{isValid,jdbcType=BIT},
-      </if>
-      <if test="hitCount != null">
-        hit_count = #{hitCount,jdbcType=BIGINT},
-      </if>
-      <if test="isSpecial != null">
-        is_special = #{isSpecial,jdbcType=BIT},
-      </if>
-      <if test="thumbnailName != null">
-        thumbnail_name = #{thumbnailName,jdbcType=VARCHAR},
-      </if>
-      <if test="remark != null">
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isDelete != null">
-        is_delete = #{isDelete,jdbcType=BIT},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.loliconck.lovemm.entity.po.Channel">
-    update channel
-    set channel_name = #{channelName,jdbcType=VARCHAR},
-      order_num = #{orderNum,jdbcType=INTEGER},
-      is_valid = #{isValid,jdbcType=BIT},
-      hit_count = #{hitCount,jdbcType=BIGINT},
-      is_special = #{isSpecial,jdbcType=BIT},
-      thumbnail_name = #{thumbnailName,jdbcType=VARCHAR},
-      remark = #{remark,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      is_delete = #{isDelete,jdbcType=BIT}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
 </mapper>

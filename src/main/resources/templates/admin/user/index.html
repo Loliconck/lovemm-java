@@ -11,19 +11,29 @@
 </head>
 <body>
 <div class="jumbotron text-center" th:include="admin/_header::#header-section"></div>
+<div th:include="admin/_nav::#admin-nav"></div>
 <div class="container">
     <h2>管理员列表</h2>
-    <div>
-        <ul>
-            <li th:each="admin:${admins}">
-                <span th:text="${admin.id}"></span>-
-                <span th:text="${admin.userName}"></span>-
-                <span th:text="${admin.lastLoginTime}"></span>-
-                <span th:text="${admin.createTime}"></span>
-                <span th:text="${admin.isDelete}"></span>
-            </li>
-        </ul>
-    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>用户名</th>
+            <th>最后登录时间</th>
+            <th>创建时间</th>
+            <th>是否删除</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="admin:${admins}">
+            <td th:text="${admin.id}"></td>
+            <td th:text="${admin.userName}"></td>
+            <td th:text="${admin.lastLoginTime}"></td>
+            <td th:text="${admin.createTime}"></td>
+            <td th:text="${admin.isDelete}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 <div class="jumbotron text-center" th:include="admin/_footer::#copy-section"></div>
 </body>

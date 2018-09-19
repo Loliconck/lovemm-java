@@ -20,37 +20,37 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping(value = "/admin")
 public class AdminController {
-    @Autowired
-    private AdminService adminService;
+	@Autowired
+	private AdminService adminService;
 
-    @GetMapping("/login")
-    public String login() {
-        return "/admin/login";
-    }
+	@GetMapping("/login")
+	public String login() {
+		return "/admin/login";
+	}
 
-    @PostMapping("/login")
-    public String login(HttpServletRequest request, String userName, String userPasswd) {
-        if (adminService.login(request, userName, userPasswd)) {
-            return "redirect:/admin/index";
-        }
-        else {
-            return "redirect:/admin/login";
-        }
-    }
+	@PostMapping("/login")
+	public String login(HttpServletRequest request, String userName, String userPasswd) {
+		if (adminService.login(request, userName, userPasswd)) {
+			return "redirect:/admin/index";
+		}
+		else {
+			return "redirect:/admin/login";
+		}
+	}
 
-    @GetMapping("/index")
-    public String index() {
-        return "/admin/index";
-    }
+	@GetMapping("/index")
+	public String index() {
+		return "/admin/index";
+	}
 
-    @GetMapping(value = "/list")
-    public String getAll(Model model) {
-        model.addAttribute("admins", adminService.getAll());
-        return "/admin/list";
-    }
+	@GetMapping(value = "/user/index")
+	public String getAll(Model model) {
+		model.addAttribute("admins", adminService.getAll());
+		return "/admin/user/index";
+	}
 
-    @GetMapping("/channel")
-    public String channel() {
-        return "/admin/channel";
-    }
+	@GetMapping("/channel/index")
+	public String channel() {
+		return "/admin/channel/index";
+	}
 }

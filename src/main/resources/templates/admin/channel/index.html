@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>频道管理</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron text-center" th:include="admin/_header::#header-section"></div>
+
+<div th:include="admin/_nav::#admin-nav"></div>
+
+<div class="container">
+    <p>
+        <a th:href="@{/admin/channel/create}" title="新建频道">新建频道</a>
+    </p>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                频道名称
+            </th>
+            <th>
+                排序
+            </th>
+            <th>
+                是否有效
+            </th>
+            <th>
+                点击数
+            </th>
+            <th>
+                是否专题
+            </th>
+            <th>
+                展示开始时间
+            </th>
+            <th>
+                创建时间
+            </th>
+            <th>
+                是否删除
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="channel:${channels}">
+            <td th:text="${channel.id}"></td>
+            <td th:text="${channel.channelName}"></td>
+            <td th:text="${channel.orderNum}"></td>
+            <td th:text="${channel.isValid}"></td>
+            <td th:text="${channel.hitCount}"></td>
+            <td th:text="${channel.isSpecial}"></td>
+            <td th:text="${channel.showDate}"></td>
+            <td th:text="${channel.createTime}"></td>
+            <td th:text="${channel.isDelete}"></td>
+            <td>
+                <a th:href="@{/admin/channel/edit/channel.id}" title="新建频道">新建频道</a> |
+                <a th:href="@{/admin/channel/delete/channel.id}" title="新建频道">新建频道</a> |
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="jumbotron text-center" th:include="admin/_footer::#copy-section"></div>
+</body>
+</html>

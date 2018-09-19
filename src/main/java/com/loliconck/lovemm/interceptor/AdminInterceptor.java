@@ -25,10 +25,10 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws
             Exception {
-        if (!adminService.checkLogin(request)) {
-            adminService.notLogin(response);
-            return false;
-        }
+//        if (!adminService.checkLogin(request)) {
+//            adminService.notLogin(response);
+//            return false;
+//        }
         return super.preHandle(request, response, handler);
     }
 

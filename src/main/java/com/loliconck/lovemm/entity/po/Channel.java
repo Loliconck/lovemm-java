@@ -23,6 +23,8 @@ public class Channel {
 
     private Boolean isDelete;
 
+    private Date showDate;
+
     public Long getId() {
         return id;
     }
@@ -101,5 +103,13 @@ public class Channel {
 
     public void setIsDelete(Boolean isDelete) {
         this.isDelete = isDelete;
+    }
+
+    public Date getShowDate() {
+        return showDate;
+    }
+
+    public void setShowDate(Date showDate) {
+        this.showDate = showDate;
     }
 }

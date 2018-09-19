@@ -12,25 +12,9 @@
 <body>
 <div class="jumbotron text-center" th:include="admin/_header::#header-section"></div>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <a class="navbar-brand" href="#">导航</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/admin/channel}" title="频道管理">频道管理</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/admin/list}" title="管理员管理">管理员管理</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<div th:include="admin/_nav::#admin-nav"></div>
 
 <div class="container">
-    <h1>ddddd</h1>
 
 </div>
 <div class="jumbotron text-center" th:include="admin/_footer::#copy-section"></div>
